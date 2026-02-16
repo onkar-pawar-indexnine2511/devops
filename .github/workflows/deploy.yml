@@ -30,10 +30,17 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Deploy to Vercel
+      - name: Deploy to Vercel Production
         uses: amondnet/vercel-action@v25
+        id: vercel-deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          vercel-args: '--prod --yes'
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Production Deployment URL
+        run: |
+          echo "✅ Deployed to production!"
+          echo "🌐 Production URL: ${{ steps.vercel-deploy.outputs.preview-url }}"
