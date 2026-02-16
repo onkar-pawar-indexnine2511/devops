@@ -8,7 +8,7 @@ export function Header({ cartCount, onCartClick }: HeaderProps) {
     <header className="header">
       <div className="container header-inner">
         <a href="#" className="logo">
-          POSTERHAUS
+          ONKAR TRADING
         </a>
         <nav className="nav">
           <a href="#shop" className="nav-link">
